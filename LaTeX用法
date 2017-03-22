@@ -1,0 +1,74 @@
+﻿# LaTeX用法
+
+## 基本语法
+
+* Comment: %
+* Comamnd: 
+  \cmd{param0}, cmd act in {...}
+  {\cmd ...}, cmd act in {...}
+* Environment:
+  \begin{env}
+  content in env
+  \end{env}
+* Parameters:
+  if in [...], it's optional
+  if in {...}, it's reqired
+  \cmd[opt1, opt2, opt3]{param1, param2, param3}
+  
+## 环境
+
+确定表格在文中的位置
+
+  \begin{table}[htb!]
+  
+## 文章结构
+
+article
+  title
+  tableofcontents
+  section
+    subsection
+      subsubsection
+        paragraph
+          subparagraph
+
+## 表格
+
+符号 | 表示是否在左右加上框
+
+  \begin{tabular}{c|c|c}
+
+\begin{table}[htb!]
+  \begin{tabular}{l|l}
+    \hline File & Description\\
+    \hline
+  \end{tabular}
+\end{table}
+
+## 添加ASCII图片
+
+注意使用等款字体
+
+  \lstset{frame=none}
+  \begin{lstlisting}
+  /-----------------\
+  | Things to do    |
+  | o Cut the grass |
+  | o Buy jam       |
+  | o Fix car       |
+  | o Make website  |
+  \-----------------/
+  \end{lstlisting}
+
+## 绘图工具Tikz
+
+## 参考资料
+
+* Tikz Examples: 
+  http://www.texample.net/tikz/examples/
+  http://nilesjohnson.net/tikz-demo.html
+  http://cremeronline.com/LaTeX/minimaltikz.pdf
+  http://blog.sina.com.cn/s/blog_5e16f1770102fd4y.html
+* 数学试卷：
+  http://blog.sina.com.cn/s/blog_570b14840100lo9x.html
+  

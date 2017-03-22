@@ -1,0 +1,78 @@
+﻿# PPC学习笔记
+
+## 概述
+
+参考框图，核心使用64bits进行数据交换的。
+
+## 框图
+
+MPC8360ERM：
+  1.2.1 Power Architecture Core
+    Figure 1-2 MPC8360E Integrated e300c1 Core Block Diagram
+
+## MMU
+
+MPC8360ERM：
+  7.1.5.1 MMUs
+  7.3.5   Memory Management
+e300coreRM：
+  Chapter 6
+    6.1 特性
+      - 存储地址
+      - MMU组织方式：IMMU和DMMU分别叙述
+      - 地址转换设施
+      - 存储保护设施
+      - 页历史信息
+      - MMU地址转换的一般流程
+      - MMU中断概述（异常）
+      - MMU指令和寄存器接口概述
+    6.2 实地址模式（虚拟地址和物理地址一一映射）
+    6.3 块地址转换
+    6.4 段存储模式
+      - 页历史记录
+      - 页存储保护
+      - TLB描述
+      - 页地址转换概述
+    6.5 页表查找操作
+
+参考框图，指令和数据的MMU管理是分开的。页模式下，每页4KB，段模式下，从128KB到256MB不等（共11种）。
+
+核心临时使用52bits的虚拟地址和Hash页表，用以生成32bits的物理地址。
+
+Hash表用于虚拟页表编号到物理页表编号的转换。
+
+页表由多个PTEG组成，每个PTEG有8个PTE，每个PTE占8个字节，即每个PTEG占64个字节。
+
+BAT的访问指令： mfspr 和 mtspr 。
+
+TLB Entry:
+  
+          ---------------------------------------------------------
+  Word1:  TID | SIZE | TS | V | EPN
+          V: Valid, invalid if reset
+          SIZE: The Page Size
+          TID: global if 0, otherwise, ThreadID, all 0 if reset
+          EPN: the Page ID
+  Word2:  ---------------------------------------------------------
+          ERPN | RPN
+          ERPN: for support 64GB address space, 0 if reset
+          RPN: the physical page number
+  Word3:  ---------------------------------------------------------
+          include cacheable, cache algorithm, memory一致性, endian, privilege
+          
+### TLB匹配
+
+### 异常
+
+* TLB异常：地址在TLB中没有找到，触发。系统的ExceptionHandler要更新TLB表。
+* 地址对齐：
+* 访问冲突：TLB命中，地址转换成功，但是权限不匹配。
+
+## 术语与词汇
+
+OEA     - Operating Environment Architecture
+BAT     - Block Address Table
+TLB     - Translation Lookup Buffer
+PTEG    - Page Table Entry Group
+PTE     - Page Table Entry
+interim - 临时的
