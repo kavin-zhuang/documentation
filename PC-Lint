@@ -1,0 +1,60 @@
+﻿# PC-Lint
+
+开发者：Gimpel软件公司
+开发日期：1985年
+
+## 错误
+
+错误编号小于1000的分配给C语言，高于1000给C++，详细可参考 lint/msg.txt 文件。
+
+                              C             C++           Warning Level
+
+    Syntax Errors            1 - 199     1001 - 1199           1
+    Internal Errors        200 - 299     1200 - 1299           0
+    Fatal Errors           300 - 399                           0
+    Warnings               400 - 699     1400 - 1699           2
+    Informational          700 - 899     1700 - 1899           3
+    Elective Notes         900 - 999     1900 - 1999           4
+    
+## 安装，购买与破解
+
+## 简单使用
+
+1. 新建 main.c
+
+    #include <stdio.h>
+    void main(void)
+    {
+      printf("hello world/n");
+    }
+    
+2. 命令行输入 lint-nt main.c
+
+    PC-lint for C/C++ (NT) Ver. 8.00q, Copyright Gimpel Software 1985-2004
+     
+    --- Module:   D:/main.c
+             _
+    #include <stdio.h>
+    D:/main.c  1  Error 322: Unable to open include file 'stdio.h'
+
+## Lint工程配置
+
+1. 运行 lint/config.exe ，需要选择编译器，处理器架构，库路径，代码风格，头文件路径，最后生成 std.lnt 如下所示：
+
+    //  Microsoft Visual C++ 2008, -si4 -sp4, lib-stl.lnt lib-w32.lnt
+    //  Standard lint options
+
+    au-misra2.lnt
+    co-msc90.lnt
+    lib-stl.lnt lib-w32.lnt
+    options.lnt  -si4 -sp4
+    -i"C:/Program Files/Microsoft Visual Studio 9.0/VC/include"
+  
+2. 使用配置文件，即 lint-nt -i "c:/lint" -u std.lnt d:/main.c ，该命令建议加入批处理文件中
+
+## VC下使用Lint
+
+在 Tools/External Tools 中，自定义工具项名为 PClint ，在 Command 中定位 lint-nt.exe ，在 Arguments 中填写
+-i "c:/lint" -u std.lnt env-vc9.lnt "$(FileName)$(FileExt)" ，最后勾选 “ Use Output window ”。
+
+env-vc9.lnt 是自带的，用于指定错误报告输出格式。
