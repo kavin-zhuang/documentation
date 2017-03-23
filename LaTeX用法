@@ -60,6 +60,10 @@ article
   \-----------------/
   \end{lstlisting}
 
+## 特殊环境
+
+* 路径： \path{C:\Keil\ARM\ARMCC\lib\armlib}
+
 ## 绘图工具Tikz
 
 ## 参考资料
