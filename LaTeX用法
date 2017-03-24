@@ -66,6 +66,10 @@ article
   \-----------------/
   \end{lstlisting}
 
+## 特殊环境
+
+* 路径： \path{C:\Keil\ARM\ARMCC\lib\armlib}
+
 ## 绘图工具Tikz
 
 ## 参考资料
@@ -77,6 +81,7 @@ article
   http://blog.sina.com.cn/s/blog_5e16f1770102fd4y.html
 * 数学试卷：
   http://blog.sina.com.cn/s/blog_570b14840100lo9x.html
+
 * 图片总是飘到下一页：
   http://bbs.pinggu.org/thread-3963503-1-1.html
   https://www.zhihu.com/question/25082703
