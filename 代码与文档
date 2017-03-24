@@ -23,3 +23,10 @@
 代码越规范，其生命周期越长。
 
 图片可以由 ASCIIFlow 生成，由DIATT.jar 生成 png 图片。
+
+## 文档编写
+
+* 用Inkscape绘制框图和流程图，保存为完整的SVG文件，并另存为一份eps文件，提供给LaTeX。
+* 用gnuplot绘制统计性图片，然后直接导出为eps文件。
+* 使用自己感觉合适的Markdown语法。
+* 发布的信息采用TeX+PDF发布。

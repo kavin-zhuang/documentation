@@ -1,0 +1,30 @@
+﻿# Gnuplot使用笔记
+
+## 导出为eps文件
+
+set terminal postscript eps
+set output 'ContextSwitchTimer.eps'
+
+## 导出为svg文件
+
+set terminal svg size 600,400 dynamic enhanced fname 'arial'  fsize 10 mousing name "simple_1" butt solid 
+set output 'simple.1.svg'
+set key inside left top vertical Right noreverse enhanced autotitles box linetype -1 linewidth 1.000
+set samples 50, 50
+plot [-10:10] sin(x),atan(x),cos(atan(x))
+
+## 画两条线
+
+plot 'ContextSwitchTimer.dat' using 1:2 title "TaskSwitch" with linespoints linecolor 3 pointtype 7, 'ContextSwitchTimer.dat' using 1:3 title "ContextSwitch" with linespoints linecolor 1 pointtype 7
+
+## 通用设置
+
+set title "ContextSwitchTimer"
+set grid
+set xlabel "Iterator: 10*N times"
+set ylabel "TimeCost: (us)"
+
+## 参考资料
+
+* 示例 - http://www.gnuplot.info/demo_svg_4.6/
+* 谈谈gnuplot（九）：输出 eps 图片 - http://blog.sciencenet.cn/blog-373392-498797.html
