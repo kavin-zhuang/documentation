@@ -1,0 +1,23 @@
+# ARM7TDMI指令模拟器
+
+## GuideLine
+
+1. 根据手册得到 InstructionSet 的掩码和特征值
+2. 编写汇编指令，测试掩码和特征值时候正确
+3. 进行反汇编，对比KEIL的反汇编，确认无误
+4. 进行运行时执行，查看效果
+5. 进一步模拟
+
+## 步骤
+
+1. 按照书本编写掩码和特征值，反汇编M4的BIN文件，发现有问题，最后了解M4是ARMV7-M架构，只支持Thumb指令集
+2. KEILv5默认不提供ARM9和ARM7的设备，需要去网站下载，然后安装
+  http://blog.csdn.net/kissmonx/article/details/38642147
+  http://www.keil.com/dd/chip/3972.htm
+  LPC2101 is an ARM7TDMI-S based
+3. 
+
+## 参考资料
+
+* MDK v4 Legacy Support - http://www2.keil.com/mdk5/legacy/
+* KEIL支持的设备列表 - http://www.keil.com/dd/
