@@ -1,0 +1,23 @@
+﻿# Visio 2013 入门
+
+## 基本流程图
+
+## 注意事项
+
+* 绘图完成后，在设计菜单中点击“大小”，选择适应绘图
+* Visio输出pdf时要使其符合PDF/A标准
+
+## 问题
+
+* 每次打开都要重新配置
+
+  该问题和注册表残留有关。
+  安装过旧版本的机器，新安装的2013不会更新.vsd和.vsdx的默认打开方式，然后2013会重新配置，但只放在临时文件中。
+  HKEY_CLASSES_ROOT\.vsd 默认值改成 Visio.Drawing.11 即可。
+  
+## 参考资料
+
+* Microsoft
+
+ - https://support.office.com/en-us/article/Create-a-basic-flowchart-e207d975-4a51-4bfa-a356-eeec314bd276
+ 

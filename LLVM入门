@@ -1,0 +1,10 @@
+﻿# LLVM入门
+
+## Pass
+
+LLVM通过独立的Pass对代码进行优化，各Pass之间的依赖关系由PassManager管理。
+
+## 术语
+
+LLVM - Lower Level Virtual Machine
+IR - Intermediate Representation

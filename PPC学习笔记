@@ -4,6 +4,10 @@
 
 参考框图，核心使用64bits进行数据交换的。
 
+## 学习曲线
+
+参考资料[1]非常有用，据此了解PPC核心部件的初始化过程，资料[3]从[2]中提取了最实用的寄存器，指令集等方便查阅。
+
 ## 框图
 
 MPC8360ERM：
@@ -34,40 +38,7 @@ e300coreRM：
       - TLB描述
       - 页地址转换概述
     6.5 页表查找操作
-
-参考框图，指令和数据的MMU管理是分开的。页模式下，每页4KB，段模式下，从128KB到256MB不等（共11种）。
-
-核心临时使用52bits的虚拟地址和Hash页表，用以生成32bits的物理地址。
-
-Hash表用于虚拟页表编号到物理页表编号的转换。
-
-页表由多个PTEG组成，每个PTEG有8个PTE，每个PTE占8个字节，即每个PTEG占64个字节。
-
-BAT的访问指令： mfspr 和 mtspr 。
-
-TLB Entry:
-  
-          ---------------------------------------------------------
-  Word1:  TID | SIZE | TS | V | EPN
-          V: Valid, invalid if reset
-          SIZE: The Page Size
-          TID: global if 0, otherwise, ThreadID, all 0 if reset
-          EPN: the Page ID
-  Word2:  ---------------------------------------------------------
-          ERPN | RPN
-          ERPN: for support 64GB address space, 0 if reset
-          RPN: the physical page number
-  Word3:  ---------------------------------------------------------
-          include cacheable, cache algorithm, memory一致性, endian, privilege
-          
-### TLB匹配
-
-### 异常
-
-* TLB异常：地址在TLB中没有找到，触发。系统的ExceptionHandler要更新TLB表。
-* 地址对齐：
-* 访问冲突：TLB命中，地址转换成功，但是权限不匹配。
-
+    
 ## 术语与词汇
 
 OEA     - Operating Environment Architecture
@@ -76,3 +47,10 @@ TLB     - Translation Lookup Buffer
 PTEG    - Page Table Entry Group
 PTE     - Page Table Entry
 interim - 临时的
+
+## 参考资料
+
+* [1]: Application Note-A Minimal PowerPC™ Boot Sequence for Executing Compiled C Programs
+* [2]: Programming Environments Manual for 32-Bit Implementations of the PowerPC™ Architecture
+* [3]: PowerPC Microprocessor Family: The Programmer’s Reference Guide
+* [4]: MPC8360ERM

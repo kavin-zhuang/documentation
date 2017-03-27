@@ -1,0 +1,5 @@
+﻿# R
+
+## 参考资料
+
+* 官方文档 - https://cran.r-project.org/manuals.html
