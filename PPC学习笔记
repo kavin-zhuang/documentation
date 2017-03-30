@@ -38,7 +38,12 @@ e300coreRM：
       - TLB描述
       - 页地址转换概述
     6.5 页表查找操作
-    
+
+## 疑难点
+
+* MMU BAT的地址必须从小到大排列
+* 若有效地址在TLB和BAT阵列中都命中，BAT变换取得优先
+
 ## 术语与词汇
 
 OEA     - Operating Environment Architecture

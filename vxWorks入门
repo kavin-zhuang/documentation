@@ -1,0 +1,34 @@
+﻿# vxWorks入门
+
+## Start-up
+
+sysInit - start-up routine, by assembly language, located in sysALib module
+  usrInit - first C code after system boots, not multitasking at this point
+    bzero (edata, end - edata); - clear BSS
+    intVecBaseSet - set vector base table
+    sysHwInit - 核心IP和片上IP初始化
+    - set up interrupt/exception vectors
+    usrKernelInit - configure the kernel
+    spawn usrRoot - the root task start kernel multitasking
+
+## 文件描述
+
+symTbl.c - 设计得非常好，由自动化工具输出的所有全局变量和函数
+
+## 底层接口
+
+* vxMsrGet / vxMsrSet
+* vxHid2Get / vxHid2Set
+
+## Tips & Code Rules
+
+* volatile x; is a code barrier.
+
+* macro branch
+
+    #ifdef xxx
+    #  if(xxx == xxx)
+    #    #define xxx xxx
+    #  else
+    #    #define xxx xxx
+    #endif
